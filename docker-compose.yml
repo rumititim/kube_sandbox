@@ -17,7 +17,7 @@
       volumes:
         - .:/code
       ports:
-        - "8008:8008"
+        - "8000:8000"
       depends_on:
         - postgres
     nginx:
