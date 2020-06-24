@@ -1,0 +1,25 @@
+# [START kubernetes_deployment]
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tstweb
+  labels:
+    app: tstweb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tstweb-container
+  template:
+    metadata:
+      labels:
+        app: tstweb-container
+    spec:
+      containers:
+      - name: tstweb-container
+        image: web
+        imagePullPolicy: Always
+        command: ["/app/start.sh"]
+        ports:
+        - containerPort: 8000
+          name: tstweb-port
